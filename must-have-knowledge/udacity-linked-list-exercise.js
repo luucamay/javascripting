@@ -22,6 +22,19 @@ class LinkedList{
 		}
 
 	}
+
+	get_position(position){
+		let current = this.head
+		let index = 1
+		while(current && index <= position){
+			if(index == position){
+				return current
+			}
+			current = current.next
+			index ++
+		}
+		return null
+	}
 }
 
 // Test cases
@@ -35,3 +48,4 @@ ll.append(e2)
 ll.append(e3)
 
 console.log(ll.head.next.next.value)
+console.log(ll.get_position(3).value)
