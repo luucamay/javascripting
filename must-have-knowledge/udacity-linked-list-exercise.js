@@ -35,6 +35,24 @@ class LinkedList{
 		}
 		return null
 	}
+
+	insert(new_element, position){
+		let current = this.head
+		let index = 1
+		if (position > 1){
+			while(current && index < position){
+				if(index == position - 1){
+					new_element.next = current.next
+					current.next = new_element
+				}
+				current = current.next
+				index ++
+			}
+		} else if (position == 1){
+			new_element.next = this.head
+			this.head = new_element
+		}
+	}
 }
 
 // Test cases
@@ -49,3 +67,7 @@ ll.append(e3)
 
 console.log(ll.head.next.next.value)
 console.log(ll.get_position(3).value)
+
+ll.insert(e4,3)
+console.log(ll.get_position(3).value)
+
