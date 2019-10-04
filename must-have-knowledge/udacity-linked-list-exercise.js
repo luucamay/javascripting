@@ -53,6 +53,22 @@ class LinkedList{
 			this.head = new_element
 		}
 	}
+
+	deletes(value){
+		let current = this.head
+		let previous = null
+		while(current.value != value && current.next){
+			previous = current
+			current = current.next
+		}
+		if(current.value == value){
+			if(previous){
+				previous.next = current.next
+			} else {
+				this.head = current.next
+			}
+		}
+	}
 }
 
 // Test cases
@@ -70,4 +86,10 @@ console.log(ll.get_position(3).value)
 
 ll.insert(e4,3)
 console.log(ll.get_position(3).value)
+
+ll.deletes(1)
+console.log(ll.get_position(1).value)
+console.log(ll.get_position(2).value)
+console.log(ll.get_position(3).value)
+
 
