@@ -48,6 +48,14 @@ class Graph{
 		to_found.edges.push(new_edge)
 		this.edges.push(new_edge)
 	}
+	get_edge_list(){
+		let edge_list = []
+		for (const edge_object of this.edges){
+			let edge = [edge_object.value, edge_object.node_from.value, edge_object.node_to.value]
+			edge_list.push(edge)
+		}
+		return edge_list
+	}
 }
 
 let graph = new Graph()
@@ -56,3 +64,4 @@ graph.insert_edge(101,1,3)
 graph.insert_edge(102,1,4)
 graph.insert_edge(103,3,4)
 console.log(graph)
+console.log(graph.get_edge_list())
