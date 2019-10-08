@@ -67,6 +67,14 @@ class Graph{
 		}
 		return adjacency_list
 	}
+	get_adjacency_matrix(){
+		const max_index = this.find_max_index()
+		let adjacency_matrix = new Array(max_index + 1).fill(0).map(()=>Array(max_index + 1).fill(0))
+		for (const edge_object of this.edges){
+			adjacency_matrix [edge_object.node_from.value][edge_object.node_to.value] = edge_object.value
+		}
+		return adjacency_matrix
+	}
 	find_max_index(){
 		let max_index = -1
 		if (this.nodes){
@@ -85,3 +93,5 @@ graph.insert_edge(102,1,4)
 graph.insert_edge(103,3,4)
 console.log(graph.get_edge_list())
 console.log(graph.get_adjacency_list())
+console.log(graph.get_adjacency_matrix())
+
