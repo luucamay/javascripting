@@ -69,7 +69,7 @@ class Graph{
 	}
 	get_adjacency_matrix(){
 		const max_index = this.find_max_index()
-		let adjacency_matrix = new Array(max_index + 1).fill(0).map(()=>Array(max_index + 1).fill(0))
+		let adjacency_matrix = new Array(max_index + 1).fill().map(()=>Array(max_index + 1).fill(0))
 		for (const edge_object of this.edges){
 			adjacency_matrix [edge_object.node_from.value][edge_object.node_to.value] = edge_object.value
 		}
