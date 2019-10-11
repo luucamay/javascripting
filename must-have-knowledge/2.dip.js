@@ -6,12 +6,7 @@ function is_shifted(A, B){
 		return false
 	}
 	temp = A + A
-	count = temp.split(B).length - 1
-	if (count > 0){
-		return true
-	} else {
-		return false
-	}
+	return temp.includes(B)
 }
 
 console.log(is_shifted('abcde','cdeab'))
