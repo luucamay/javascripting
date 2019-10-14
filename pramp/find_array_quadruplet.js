@@ -9,7 +9,7 @@ function find_array_quadruplet(arr, s){
 		return []
 	arr.sort((a, b) => a - b)
 	for (let i = 0; i < n -3; i++){
-		for (let j = i + 1; j < n -2; i++){
+		for (let j = i + 1; j < n -2; j++){
 			let low = j + 1
 			let high = n - 1
 			let r = s - (arr[i] + arr[j])
@@ -28,6 +28,6 @@ function find_array_quadruplet(arr, s){
 }
 
 // Test
-let myarray = [4,4,4,4]
+let myarray = [4,4,4,2]
 let s = 16
 console.log(find_array_quadruplet(myarray, s))
