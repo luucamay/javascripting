@@ -12,42 +12,42 @@ Map/Dictionary/Hash Table that maps strings (keys) to a generic type
 
 If a certain key is empty, it should be excluded from the output (see e in the example below).
 */
-function flatten_dictionary(dictionary){
+function flattenDictionary(dictionary) {
 	let keys = Object.keys(dictionary)
-	let values = Object.values(dictionary)
-	let new_dict = {}
-	while (keys.length > 0){
-		let key = keys.shift()
-		let value = values.shift()
-		if (typeof(value) == 'number' || typeof(value) == 'string'){
-			new_dict[key] = value
-		} else {
-			for (let child_key in value){
-				let dot = "."
-				if (child_key === "" || child_key === ""){
-					dot = ""
-				}
-				keys.push(key + dot + child_key)
-				values.push(value[child_key])
-			}
-		}
-	}
-	return new_dict
-}
-
-// Test
-let dict = {
-	"Key1" : "1",
-	"Key2" : {
-		"a" : "2",
-		"b" : "3",
-		"c" : {
-			"d" : "3",
-			"e" : {
-				"" : "1"
-			}
-		}
-	}
-}
-
-console.log(flatten_dictionary(dict))
+	let values = keys.map(function(key)  {return dictionary[key];  })
+	  let new_dict = {}
+	  while (keys.length > 0){
+		  let key = keys.shift()
+		  let value = values.shift()
+		  if (typeof(value) == 'number' || typeof(value) == 'string'){
+			  new_dict[key] = value
+		  } else {
+			  for (let child_key in value){
+				  let dot = "."
+				  if (child_key === "" || key === ""){
+					  dot = ""
+				  }
+				  keys.push(key + dot + child_key)
+				  values.push(value[child_key])
+			  }
+		  }
+	  }
+	  return new_dict
+  }
+  
+  let dict = {
+	  "Key1" : "1",
+	  "Key2" : {
+		  "a" : "2",
+		  "b" : "3",
+		  "c" : {
+			  "d" : "3",
+			  "e" : {
+				  "" : "1"
+			  }
+		  }
+	  }
+  }
+  
+  console.log(flattenDictionary(dict))
+  
