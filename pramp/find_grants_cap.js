@@ -10,21 +10,17 @@ output: 47
 function findGrantsCap(grantsArray, newBudget){
 	grantsArray.sort(function (a,b){return b-a})
 	let n = grantsArray.length
-	let currentBudget = grantsArray.reduce(function (a, b) {return a + b})
-	let previousCap = 0
+	let sum_unchanged = grantsArray.reduce(function (a, b) {return a + b})
 	for (let i = 0; i < n; i++){
-		currentCap = grantsArray[i]
-		currentBudget = currentBudget - previousCap*i + currentCap*i
-		if(currentBudget <= newBudget){
-			let cap = (newBudget - (currentBudget - currentCap*i))/parseFloat(i)
-			return cap
-		}
-		previousCap = currentCap
+		currentBudget = sum_unchanged + grantsArray[i]*i
+		if(currentBudget <= newBudget)
+			return (newBudget - sum_unchanged)/parseFloat(i)
+		sum_unchanged -= grantsArray[i]
 	}
-	return newBudget/parseFloat(n)
+	return parseFloat(newBudget - sum_unchanged)/n
 }
 
 // test
-let grantsArray = [2, 100, 50, 120, 1000, 1]
+let grantsArray = [2, 100, 50, 120, 1000]
 let newBudget = 190
 console.log(findGrantsCap(grantsArray, newBudget))
