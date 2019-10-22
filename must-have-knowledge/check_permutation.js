@@ -23,7 +23,23 @@ function checkPermutation1(a, b){
 	}
 	return true
 }
+// Second solution O(nlogn)
+function checkPermutation2(a, b){
+	let size_a = a.length
+	let size_b = b.length
+	if (size_a != size_b)
+		return false
 
+	a = a.split('').sort().join('')
+	b = b.split('').sort().join('')
+
+	if (a == b)
+		return true
+	else
+		return false
+}
 // Test
 console.log(checkPermutation1('abcd','dcba'))
 console.log(checkPermutation1('abcdo','adcba'))
+console.log(checkPermutation2('abcd','dcba'))
+console.log(checkPermutation2('abcdo','adcba'))
