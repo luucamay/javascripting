@@ -12,19 +12,14 @@ const getStrings = (city) => {
     const currChar = city[i];
     if (currChar.match(/[a-z]/i)){
       if (currChar in dict)
-        dict[currChar] += 1;
+        dict[currChar] += '*';
       else
-        dict[currChar] = 1;
+        dict[currChar] = '*';
     }
   }
 
   for (let char in dict){
-    const numStars = dict[char];
-    let stars = '';
-    for (let i=0; i<numStars; i++){
-      stars += '*';
-    }
-    const cityStar = char + ':' + stars;
+    const cityStar = char + ':' + dict[char];
     answer = answer + cityStar + ',';
   }
 
