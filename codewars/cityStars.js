@@ -1,5 +1,5 @@
 // Challenge description here: https://gist.github.com/luucamay/c08847f73d1890385c24cc05d2238feb
-// Original challenge: https://www.codewars.com/kata/5b358a1e228d316283001892/train/python
+// Original challenge from codewars.com found here: https://www.codewars.com/kata/5b358a1e228d316283001892/train/python
 
 const getStrings = (city) => {
   let answer = '';
