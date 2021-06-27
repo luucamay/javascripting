@@ -1,4 +1,3 @@
-const { throws } = require('assert');
 const fs = require('fs');
 
 const countLines = (err, data) => {
