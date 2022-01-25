@@ -12,6 +12,17 @@ const isUnique = (xString) => {
   return true;
 }
 
+const isUniqueAlphabet = (xString) => {
+  const alphabet = new Array(128).fill(false);
+  for (let i = 0; i < xString.length; i++) {
+    const ascciValue = xString.charCodeAt(i);
+    if (alphabet[ascciValue])
+      return false;
+    alphabet[ascciValue] = true;
+  }
+  return true;
+}
+
 const isUniqueSort = (xString) => {
   const xArray = xString.split('').sort();
   const size = xString.length;
@@ -24,5 +35,6 @@ const isUniqueSort = (xString) => {
   return unique;
 }
 const result = isUnique("asdfg");
+const result = isUniqueAlphabet("asdfgzdZ");
 const result2 = isUniqueSort("basdfg");
 console.log(result, result2);
