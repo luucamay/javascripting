@@ -26,17 +26,19 @@ var reverseList = function (head) {
 
 // Recursive solution T: O(n) M: O(n)
 var reverseList = function (head) {
-  let nextHead = null
+  let nextHead = head
   // base case
-  if (!head.next) {
-    nextHead = head
-    return nextHead
+  if (!head) {
+    return null
   }
 
-  let prev = head
-  head.next.next = prev
-  prev.next = null
-  reverseList(head.next)
+  // if ther is a subproblem still
+  if (head.next) {
+    nextHead = reverseList(head.next)
+    // reverse the link
+    head.next.next = head
+  }
+  head.next = null
 
   return nextHead
 };
